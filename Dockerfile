@@ -27,5 +27,7 @@ RUN python3 -m pip install --upgrade pip && \
 
 ENV HSA_OVERRIDE_GFX_VERSION=10.3.0
 
-# This will keep the container running indefinitely until stopped.
-CMD ["tail", "-f", "/dev/null"]
+ARG VIDEO_GID=104
+RUN groupadd -g ${VIDEO_GID} video && usermod -aG video root
+
+CMD ["/bin/bash"]
