@@ -4,6 +4,7 @@ FROM ubuntu:20.04
 LABEL maintainer="you@example.com"
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV HSA_OVERRIDE_GFX_VERSION=10.3.0
 
 # Add deadsnakes PPA
 RUN apt-get update && \
@@ -40,7 +41,5 @@ RUN python3 -m pip install \
       torchvision==0.14.1+rocm5.2 \
       torchaudio==0.13.1 \
       --extra-index-url https://download.pytorch.org/whl/rocm5.2
-
-ENV HSA_OVERRIDE_GFX_VERSION=10.3.0
 
 CMD ["/bin/bash"]
