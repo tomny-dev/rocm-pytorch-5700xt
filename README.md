@@ -15,11 +15,11 @@ It serves as a foundation for deploying ROCm-based deep learning models like [St
 ## 🐳 Usage
 
 ```bash
-docker pull ghcr.io/yourname/rocm-pytorch-5700xt:latest
+docker pull ghcr.io/tomny-dev/rocm-pytorch-5700xt:latest
 ```
 
 Or use it as a base in your own Dockerfile:
 
 ```dockerfile
-FROM ghcr.io/yourname/rocm-pytorch-5700xt:latest
+FROM ghcr.io/tomny-dev/rocm-pytorch-5700xt:latest
 ```
