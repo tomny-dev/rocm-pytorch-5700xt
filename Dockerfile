@@ -26,3 +26,6 @@ RUN python3 -m pip install --upgrade pip && \
       --extra-index-url https://download.pytorch.org/whl/rocm5.2
 
 ENV HSA_OVERRIDE_GFX_VERSION=10.3.0
+
+# This will keep the container running indefinitely until stopped.
+CMD ["tail", "-f", "/dev/null"]

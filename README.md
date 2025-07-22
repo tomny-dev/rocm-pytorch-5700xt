@@ -23,3 +23,10 @@ Or use it as a base in your own Dockerfile:
 ```dockerfile
 FROM ghcr.io/tomny-dev/rocm-pytorch-5700xt:latest
 ```
+
+## Resources
+
+https://rocm.docs.amd.com/en/docs-5.2.3/deploy/linux/installer/install.html
+
+https://github.com/comfyanonymous/ComfyUI/discussions/1119
+
