@@ -1,5 +1,5 @@
 # ROCm 5.2.3 PyTorch Base for AMD GPUs (e.g., RX 5700 XT / GFX1030)
-FROM ubuntu:20.04 as rocm-pytorch-5700xt
+FROM ubuntu:20.04
 
 LABEL maintainer="you@example.com"
 

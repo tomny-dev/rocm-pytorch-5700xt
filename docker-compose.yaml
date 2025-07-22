@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  rocm-pytorch-5700xt:
+    image: ghcr.io/tomny-dev/rocm-pytorch-5700xt:latest
+    container_name: rocm-pytorch-5700xt
+    stdin_open: true
+    tty: true
+    command: ["/bin/bash"]
+    devices:
+      - /dev/kfd
+      - /dev/dri/renderD128
+      - /dev/dri/card0
+    group_add:
+      - "video"
+      - 104
