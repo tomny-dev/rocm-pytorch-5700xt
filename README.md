@@ -8,6 +8,7 @@ It serves as a foundation for deploying ROCm-based deep learning models like [St
 
 - Ubuntu 20.04
 - ROCm 5.2.3 toolchain
+- Python 3.10 environment
 - PyTorch 1.13.1 + ROCm 5.2.3 wheels
 - Compatible with AMD RX 5700 XT / GFX1030
 - Ideal for image generation and machine learning apps using ROCm
