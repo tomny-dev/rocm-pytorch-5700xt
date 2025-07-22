@@ -5,6 +5,20 @@ LABEL maintainer="you@example.com"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Add deadsnakes PPA and install Python 3.10
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3.10 python3.10-venv python3.10-dev python3-pip && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
+    ln -sf /usr/bin/python3.10 /usr/bin/python && \
+    python3 --version && \
+    pip3 install --upgrade pip
+
+
 # Install ROCm dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget gnupg2 curl ca-certificates lsb-release software-properties-common \
@@ -12,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && wget -qO - https://repo.radeon.com/rocm/rocm.gpg.key | apt-key add - \
     && apt-get update && apt-get install -y --no-install-recommends \
     rocm-smi rocm-utils rocminfo hip-runtime-amd \
-    git ffmpeg unzip libgl1 libjemalloc2 python3 python3-pip python3-venv \
+    git ffmpeg unzip libgl1 libjemalloc2 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PATH=/opt/rocm/bin:$PATH
@@ -26,8 +40,5 @@ RUN python3 -m pip install --upgrade pip && \
       --extra-index-url https://download.pytorch.org/whl/rocm5.2
 
 ENV HSA_OVERRIDE_GFX_VERSION=10.3.0
-
-ARG VIDEO_GID=104
-RUN groupadd -g ${VIDEO_GID} video && usermod -aG video root
 
 CMD ["/bin/bash"]
