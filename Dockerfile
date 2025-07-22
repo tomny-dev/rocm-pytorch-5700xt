@@ -14,10 +14,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python3.10 python3.10-venv python3.10-dev python3-pip && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
-    ln -sf /usr/bin/python3.10 /usr/bin/python && \
-    python3 --version && \
-    pip3 install --upgrade pip
-
+    ln -sf /usr/bin/python3.10 /usr/bin/python
 
 # Install ROCm dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
