@@ -16,6 +16,16 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
     ln -sf /usr/bin/python3.10 /usr/bin/python
 
+# Install Python 3.10 without pip, then install pip manually to avoid system pip issues
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        software-properties-common wget curl gnupg2 ca-certificates lsb-release \
+        python3.10 python3.10-venv python3.10-dev && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 && \
+    ln -sf /usr/bin/python3.10 /usr/bin/python && \
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10 && \
+    python3 --version && pip3 --version
+
 # Install ROCm dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget gnupg2 curl ca-certificates lsb-release software-properties-common \
