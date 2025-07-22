@@ -39,8 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV PATH=/opt/rocm/bin:$PATH
 
 # Install PyTorch with ROCm 5.2.3 compatibility
-RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install \
+RUN python3 -m pip install \
       torch==1.13.1+rocm5.2 \
       torchvision==0.14.1+rocm5.2 \
       torchaudio==0.13.1 \
